@@ -3,7 +3,7 @@ import numpy as np
 from parameters import ell, plain_modulus, bin_capacity, alpha
 
 base = 2 ** ell
-minibin_capacity = int(bin_capacity / alpha)# minibin_capacity = B / alpha
+minibin_capacity = int(bin_capacity / alpha) # minibin_capacity = B / alpha
 logB_ell = int(log2(minibin_capacity) / ell) + 1 # <= 2 ** HE.depth = 16  
 t = plain_modulus
 

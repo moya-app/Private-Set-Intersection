@@ -4,6 +4,16 @@ from math import log2
 from multiprocessing import Pool
 from parameters import sigma_max
 
+'''
+An Oblivious Pseudorandom Function(OPRF) is a cryptographic function, similar to a keyed-hash function but deviates
+with the use of two parties cooperating to securely compute a pseudorandom function (PRF).
+
+A Pseudorandom Function (PRF) is a cryptographic function that behaves like a random function but it is deterministically
+generated from a secret key and input. PRF generates outputs that are computationally indistinguishable from random values
+to any party who does not possess the secret key regardless of knowing the functions inputs.
+
+'''
+
 mask = 2 ** sigma_max - 1
 
 number_of_processes = 4

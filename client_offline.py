@@ -6,6 +6,13 @@ from time import time
 oprf_client_key = 12345678910111213141516171819222222222222
 t0 = time()
 
+'''
+Diffie-Hellman (DH), known as exponential key exchange, is a key exchange protocol that allows
+sender and receiver to communicate over public channels by generating a unique session key for symmetric encryption.
+
+Elliptic Curve Diffied-Hellman (ECDH) follows the same protocol as DH but uses algebraic curves in its key generation
+as opposed to generating large numbers using integers modulo a prime number (finite field of p elements where integers mod p is a finite field and p is a prime number).
+'''
 # key * generator of elliptic curve
 client_point_precomputed = (oprf_client_key % order_of_generator) * G
 
