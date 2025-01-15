@@ -126,26 +126,20 @@ count = [0] * alpha
 g = open('client_set', 'r')
 client_set_entries = g.readlines()
 g.close()
-client_intersection = []
+
+'''
+This code has been modified to return only the count of the intersection
+'''
+count = 0
 for j in range(alpha):
     for i in range(poly_modulus_degree):
+        # If there is an index of this vector where he gets 0, then the (Cuckoo hashing) item corresponding to this index belongs to a minibin of the corresponding server's bin.
         if decryptions[j][i] == 0:
-            count[j] = count[j] + 1
+            count = count + 1
 
-            # The index i is the location of the element in the intersection
-            # Here we recover this element from the Cuckoo hash structure
-            PRFed_common_element = reconstruct_item(recover_CH_structure[i], i, hash_seeds[recover_CH_structure[i] % (2 ** log_no_hashes)])
-            index = PRFed_client_set.index(PRFed_common_element)
-            client_intersection.append(int(client_set_entries[index][:-1]))
-
-h = open('intersection', 'r')
-real_intersection = [int(line[:-1]) for line in h]
-h.close()
 t3 = time()
-print('\n Intersection recovered correctly: {}'.format(set(client_intersection) == set(real_intersection)))
 print("Client Set Length: ", len(client_set_entries))
-print("Intersection Set Length: ", len(real_intersection))
-print("Length of Intersection: ", len(client_set_entries) - len(real_intersection))
+print("Intersection Set Length: ", count)
 print("Disconnecting...\n")
 print('  Client ONLINE computation time {:.2f}s'.format(t1 - t0 + t3 - t2))
 print('  Communication size:')

@@ -15,9 +15,6 @@ f.close()
 g = open('client_set', 'w')
 for item in client_set:
 	g.write(str(item) + '\n')
-g.close()		
+g.close()
 
-h = open('intersection', 'w')
-for item in intersection:
-	h.write(str(item) + '\n')
-h.close()
+# Removed intersection set as not needed
